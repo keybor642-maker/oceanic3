@@ -1,0 +1,21 @@
+name: OceanicDaggers
+version: 1.0.0
+main: mc.mkay.oceanicdaggers.OceanicDaggers
+api-version: '1.21'
+description: Dual-wield oceanic daggers with special abilities
+author: mkaymc
+
+commands:
+  givedaggers:
+    description: Give oceanic daggers to a player
+    usage: /givedaggers [player]
+    permission: oceanicdaggers.give
+  givedaggeroff:
+    description: Give offhand oceanic dagger
+    usage: /givedaggeroff [player]
+    permission: oceanicdaggers.give
+
+permissions:
+  oceanicdaggers.give:
+    description: Can give oceanic daggers
+    default: op
