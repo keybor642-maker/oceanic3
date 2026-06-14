@@ -1,0 +1,35 @@
+name: Build OceanicDaggers
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build Plugin
+        run: mvn clean package
+
+      - name: Show Generated Files
+        run: find . -name "*.jar"
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: OceanicDaggers
+          path: |
+            **/*.jar
+            !**/original-*.jar
